@@ -7,14 +7,16 @@ module Rubinsta
     end
 
     def execute
-		  init_actions.map { |action| action.execute }
-		  times_to_run.times do
-			  actions.map { |action| action.execute }
-			  sleep 2
-		  end
+      init_actions.map { |action| action.execute }
+      times_to_run.times do
+        actions.map do |action|
+          sleep 1
+          action.execute
+        end
+      end
     end
 
-	  private
+    private
   
     attr_reader :init_actions, :actions, :times_to_run
   end
