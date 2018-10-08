@@ -10,12 +10,17 @@ module Rubinsta
 		end
 
 		def wait_until(word)
-			wait = Selenium::WebDriver::Wait.new(timeout: 25)
 			wait.until { /#{word}/.match(selenium.page_source) }
 		end
 
 		def close_browser()
 	    selenium.quit
 	  end
+
+		private
+
+		def wait
+			@wait ||= Selenium::WebDriver::Wait.new(timeout: 25)
+		end
 	end
 end

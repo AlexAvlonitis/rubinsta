@@ -10,6 +10,7 @@ module Rubinsta
 			init_actions.map { |action| action.execute }
 			times_to_run.times do
 				actions.map { |action| action.execute }
+				sleep 2
 			end
 		end
 
